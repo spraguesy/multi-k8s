@@ -1,0 +1,18 @@
+apiVersion: certmanager.k8s.io/v1alpha2
+kind: Certificate
+metadata:
+  name: k89s-multi-com-tls
+spec:
+  secretName: k89s-multi-com
+  issueRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: spraguesy.io
+  dnsNames:
+    - fib.spraguesy.io
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - fib.spraguesy.io 
